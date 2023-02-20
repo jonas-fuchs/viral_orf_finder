@@ -1,15 +1,15 @@
-## Find ORFs within a virus genome
+# Find ORFs within a virus genome
 It allows you to find orfs in fasta sequences of viral genomes.
 
 If a reference is provided as genebank file, the script uses the min length of the orfs within the genebank file and determines automatically if the orfs should be overlapping or not.
 
-# This script relies on:
+## This script relies on:
 * python3
 * pandas
 * SeqIO
 
 
-# Which orfs can the script find:
+## Which orfs can the script find:
 Types:
 0: -----[M-------------*]-------- complete
 1: ------M--[M---------*]-------- complete_internal
@@ -20,7 +20,7 @@ Types:
 6: ------*]-------------[M------- circular
 7: ------*]--------------M---[M-- circular_internal
 
-# How the no overlap algorithm works:
+## How the no overlap algorithm works:
 no overlap algorithm:
 frame 1: -[M------*]--- ----[M--*]---------[M-----
 frame 2: -------[M------*]---------[M---*]--------
@@ -29,7 +29,7 @@ frame 3: [M---*]-----[M----------*]----------[M---
 results: [M---*][M------*]--[M--*]-[M---*]-[M-----
 frame:    3      2           1      2       1
 
-# Installation and running:
+## Installation and running:
 
 ```bash
 
@@ -58,7 +58,7 @@ python3 orf_finder.py infile.fasta
 # + and/or - (+ = positive strand, - = negative strand)
 ```
 
-# Side note:
+### Side note:
 
 The script has set the following codons:
 start_codons = ["ATG"]
