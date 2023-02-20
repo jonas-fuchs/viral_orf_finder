@@ -19,7 +19,8 @@ Types:
 ------M--[M------------------- #5_partial_internal  
 [--------------------*]------- #3_partial  
 [----------------------------] #5_3_partial  
-------*]-------------[M------- #circular  
+------*]-------------[M------- #circular
+------*]--------------M---[M-- #circular_internal
 ```
 
 ## How the no overlap algorithm works:
