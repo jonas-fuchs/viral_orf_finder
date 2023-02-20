@@ -11,20 +11,20 @@ If a reference is provided as genebank file, the script uses the min length of t
 
 ## Which orfs can the script find:
 
-```bash
+```python3
 Types:  
------[M-------------*]-------- complete  
-------M--[M---------*]-------- complete_internal  
------[M----------------------- 5_partial  
-------M--[M------------------- 5_partial_internal  
-[--------------------*]------- 3_partial  
-[----------------------------] 5_3_partial  
-------*]-------------[M------- circular  
+-----[M-------------*]-------- #complete
+------M--[M---------*]-------- #complete_internal  
+-----[M----------------------- #5_partial  
+------M--[M------------------- #5_partial_internal  
+[--------------------*]------- #3_partial  
+[----------------------------] #5_3_partial  
+------*]-------------[M------- #circular  
 ```
 
 ## How the no overlap algorithm works:
 
-```bash
+```python3
 no overlap algorithm:  
 frame 1: -[M------*]-------[M--*]---------[M------
 frame 2: -------[M------*]---------[M---*]--------  
