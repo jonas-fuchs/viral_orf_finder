@@ -26,12 +26,12 @@ Types:
 
 ```bash
 no overlap algorithm:  
-frame 1: -[M------*]-------[M--*]---------[M-----  
+frame 1: -[M------*]-------[M--*]---------[M------
 frame 2: -------[M------*]---------[M---*]--------  
 frame 3: [M---*]-----[M----------*]----------[M---  
 
-results: [M---*][M------*]--[M--*]-[M---*]-[M-----  
-frame:    3      2           1      2       1  
+results: [M---*][M------*]-[M--*]-[M---*]-[M------  
+frame:    3      2          1      2       1  
 ```
 
 ## Installation and running:  
@@ -66,7 +66,10 @@ python3 orf_finder.py infile.fasta
 ### Side note:
 
 The script has set the following codons:
+
+```python3
 start_codons = ["ATG"]
 stop_codons = ["TAG", "TGA", "TAA"]
+```
 
 If you want to edit this you can do this directly by setting codons in the find_orfs function within the script.
