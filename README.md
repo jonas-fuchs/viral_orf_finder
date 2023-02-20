@@ -10,24 +10,29 @@ If a reference is provided as genebank file, the script uses the min length of t
 
 
 ## Which orfs can the script find:
-Types:  
-0: -----[M-------------*]-------- complete  
-1: ------M--[M---------*]-------- complete_internal  
-2: -----[M----------------------- 5_partial  
-3: ------M--[M------------------- 5_partial_internal  
-4: [--------------------*]------- 3_partial  
-5: [----------------------------] 5_3_partial  
-6: ------*]-------------[M------- circular  
-7: ------*]--------------M---[M-- circular_internal  
 
-## How the no overlap algorithm works:  
+```bash
+Types:  
+-----[M-------------*]-------- complete  
+------M--[M---------*]-------- complete_internal  
+-----[M----------------------- 5_partial  
+------M--[M------------------- 5_partial_internal  
+[--------------------*]------- 3_partial  
+[----------------------------] 5_3_partial  
+------*]-------------[M------- circular  
+```
+
+## How the no overlap algorithm works:
+
+```bash
 no overlap algorithm:  
-frame 1: -[M------*]--- ----[M--*]---------[M-----  
+frame 1: -[M------*]-------[M--*]---------[M-----  
 frame 2: -------[M------*]---------[M---*]--------  
 frame 3: [M---*]-----[M----------*]----------[M---  
 
 results: [M---*][M------*]--[M--*]-[M---*]-[M-----  
 frame:    3      2           1      2       1  
+```
 
 ## Installation and running:  
 
