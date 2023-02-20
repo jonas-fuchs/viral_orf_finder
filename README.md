@@ -44,7 +44,7 @@ git clone https://github.com/jonas-fuchs/viral_orf_finder
 cd viral_orf_finder
 
 # run the script:
-python3 orf_finder.py infile.fasta
+python3 orf_finder.py infile.fasta > outfile.tabular
 
 # optional arguments:
 -r/--reference
@@ -56,8 +56,7 @@ python3 orf_finder.py infile.fasta
 -c/--circular
 # True/False if script should search for circular orfs
 -p/--partial
-# True/False if script should search for partial orfs
-# with no START and/or STOP
+# True/False if script should search for partial orfs with no START and/or STOP
 -n/--no-overlap
 # True/False if script should consider only orfs that do not overlap
 -s/--strands
