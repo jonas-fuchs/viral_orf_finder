@@ -1,34 +1,67 @@
-# Calculate SARS-CoV-2 lineage-defining consensus mutations on the basis of a covsonar db
+## Find ORFs within a virus genome
+It allows you to find orfs in fasta sequences of viral genomes.
 
-This light script relies on:
+If a reference is provided as genebank file, the script uses the min length of the orfs within the genebank file and determines automatically if the orfs should be overlapping or not.
+
+# This script relies on:
 * python3
 * pandas
-* argparse
+* SeqIO
 
-Installation and running:
+
+# Which orfs can the script find:
+Types:
+0: -----[M-------------*]-------- complete
+1: ------M--[M---------*]-------- complete_internal
+2: -----[M----------------------- 5_partial
+3: ------M--[M------------------- 5_partial_internal
+4: [--------------------*]------- 3_partial
+5: [----------------------------] 5_3_partial
+6: ------*]-------------[M------- circular
+7: ------*]--------------M---[M-- circular_internal
+
+# How the no overlap algorithm works:
+no overlap algorithm:
+frame 1: -[M------*]--- ----[M--*]---------[M-----
+frame 2: -------[M------*]---------[M---*]--------
+frame 3: [M---*]-----[M----------*]----------[M---
+
+results: [M---*][M------*]--[M--*]-[M---*]-[M-----
+frame:    3      2           1      2       1
+
+# Installation and running:
 
 ```bash
-# create a covsonar database (https://github.com/rki-mf1/covsonar)
-# export the database:
-python3 path/to/covsonar/sonar.py match --db mydb > out.csv
 
 # install the script:
-git clone https://github.com/jonas-fuchs/covsonar_con_mut
-cd covsonar_con_mut
+git clone https://github.com/jonas-fuchs/viral_orf_finder
+cd viral_orf_finder
 
 # run the script:
-python3 mutfreq.py out.csv > results.tabular
+python3 orf_finder.py infile.fasta
 
 # optional arguments:
--l/--lineages
-# define lineages to calculate the consensus mutations on.
-# If none are given the whole db is used.
-# Multiple lineages can be separated by a comma
--p/--profile
-# calculate aa or dna consensus
--t/--threshold
-# 0-1 frequency threshold to be considered
--c/--combine-lineages
-# True or False, if True calculates one consensus profile for all given lineages.
-# Ignored if no lineages are given
+-r/--reference
+# reference genebank file
+-m/--min-length
+# min length of the orfs to find
+-i/--internal
+# True/False if script should search for internal orfs
+-c/--circular
+# True/False if script should search for circular orfs
+-p/--partial
+# True/False if script should search for partial orfs
+# with no START and/or STOP
+-n/--no-overlap
+# True/False if script should consider only orfs that do not overlap
+-s/--strands
+# + and/or - (+ = positive strand, - = negative strand)
 ```
+
+# Side note:
+
+The script has set the following codons:
+start_codons = ["ATG"]
+stop_codons = ["TAG", "TGA", "TAA"]
+
+If you want to edit this you can do this directly by setting codons in the find_orfs function within the script.
